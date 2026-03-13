@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<EmergencyEvent xmlns="http://smarttraffic/events"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://smarttraffic/events ../schemas/priority_events.xsd">
+
+    <EventID>EVT_000001</EventID>
+
+    <TrafficLightID>I101_R2_TL</TrafficLightID>
+
+    <Timestamp>2026-02-14T10:00:03</Timestamp>
+
+</EmergencyEvent>

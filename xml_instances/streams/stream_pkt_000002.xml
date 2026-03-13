@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<TrafficStreamPacket xmlns="http://smarttraffic/stream"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:schemaLocation="http://smarttraffic/stream ../schemas/traffic_stream.xsd">
+
+    <PacketID>PKT_000002</PacketID>
+
+    <Timestamp>2026-02-14T10:00:02</Timestamp>
+
+    <IntersectionID>I101</IntersectionID>
+
+    <RoadID>I101_R2</RoadID>
+
+    <VehicleCount>9</VehicleCount>
+
+    <EmergencyVehicle>true</EmergencyVehicle>
+
+    <PedestrianWaiting>false</PedestrianWaiting>
+
+</TrafficStreamPacket>

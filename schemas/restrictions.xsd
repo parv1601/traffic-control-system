@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://smarttraffic/common"
+           xmlns="http://smarttraffic/common"
+           elementFormDefault="qualified">
+
+    <!-- Intersection ID Pattern: I### -->
+    <xs:simpleType name="IntersectionIDType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="I[0-9]{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Road ID Pattern: I###_R# -->
+    <xs:simpleType name="RoadIDType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="I[0-9]{3}_R[1-4]"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Traffic Light ID Pattern -->
+    <xs:simpleType name="TrafficLightIDType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="I[0-9]{3}_R[1-4]_TL"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Packet ID Pattern -->
+    <xs:simpleType name="PacketIDType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="PKT_[0-9]{6}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Event ID Pattern -->
+    <xs:simpleType name="EventIDType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="EVT_[0-9]{6}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Command ID -->
+    <xs:simpleType name="CommandIDType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="CMD_[0-9]{6}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Vehicle Count Restriction -->
+    <xs:simpleType name="VehicleCountType">
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="500"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Speed Restriction -->
+    <xs:simpleType name="SpeedType">
+        <xs:restriction base="xs:float">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="200"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Density Restriction -->
+    <xs:simpleType name="DensityType">
+        <xs:restriction base="xs:float">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Signal State Enum -->
+    <xs:simpleType name="SignalStateType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="RED"/>
+            <xs:enumeration value="YELLOW"/>
+            <xs:enumeration value="GREEN"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:ct="http://smarttraffic/common"
+           targetNamespace="http://smarttraffic/events"
+           xmlns="http://smarttraffic/events"
+           elementFormDefault="qualified">
+
+    <xs:import namespace="http://smarttraffic/common"
+               schemaLocation="common_types.xsd"/>
+
+    <!-- Emergency Event -->
+    <xs:element name="EmergencyEvent">
+
+        <xs:complexType>
+            <xs:sequence>
+
+                <xs:element name="EventID"
+                            type="ct:EventIDType"/>
+
+                <xs:element name="TrafficLightID"
+                            type="ct:TrafficLightIDType"/>
+
+                <xs:element name="Timestamp"
+                            type="xs:dateTime"/>
+
+            </xs:sequence>
+        </xs:complexType>
+
+    </xs:element>
+
+    <!-- Pedestrian Event -->
+    <xs:element name="PedestrianEvent">
+
+        <xs:complexType>
+            <xs:sequence>
+
+                <xs:element name="EventID"
+                            type="ct:EventIDType"/>
+
+                <xs:element name="TrafficLightID"
+                            type="ct:TrafficLightIDType"/>
+
+                <xs:element name="Timestamp"
+                            type="xs:dateTime"/>
+
+            </xs:sequence>
+        </xs:complexType>
+
+    </xs:element>
+
+</xs:schema>

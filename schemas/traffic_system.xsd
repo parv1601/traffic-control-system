@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:include schemaLocation="restrictions.xsd"/>
+    <xs:include schemaLocation="intersection.xsd"/>
+    <xs:include schemaLocation="traffic_stream.xsd"/>
+    <xs:include schemaLocation="signal_control.xsd"/>
+    <xs:include schemaLocation="priority_events.xsd"/>
+
+</xs:schema>

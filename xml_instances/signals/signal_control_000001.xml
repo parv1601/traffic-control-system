@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SignalControlCommand xmlns="http://smarttraffic/signal"
+                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      xsi:schemaLocation="http://smarttraffic/signal ../schemas/signal_control.xsd">
+
+    <CommandIDID>CMD_000001</CommandIDID>
+
+    <TrafficLightID>I101_R1_TL</TrafficLightID>
+
+    <SignalState>RED</SignalState>
+
+    <DurationSeconds>25</DurationSeconds>
+
+</SignalControlCommand>

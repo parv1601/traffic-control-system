@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:ct="http://smarttraffic/common"
+           targetNamespace="http://smarttraffic/stream"
+           xmlns="http://smarttraffic/stream"
+           elementFormDefault="qualified">
+
+    <xs:import namespace="http://smarttraffic/common"
+               schemaLocation="restrictions.xsd"/>
+
+    <xs:element name="TrafficStreamPacket">
+
+        <xs:complexType>
+
+            <xs:sequence>
+
+                <xs:element name="PacketID"
+                            type="ct:PacketIDType"/>
+
+                <xs:element name="Timestamp"
+                            type="xs:dateTime"/>
+
+                <xs:element name="IntersectionID"
+                            type="ct:IntersectionIDType"/>
+
+                <xs:element name="RoadID"
+                            type="ct:RoadIDType"/>
+
+                <xs:element name="VehicleCount"
+                            type="ct:VehicleCountType"/>
+
+                <xs:element name="AverageSpeed"
+                            type="ct:SpeedType"/>
+
+                <xs:element name="TrafficDensity"
+                            type="ct:DensityType"/>
+
+                <xs:element name="EmergencyVehicle"
+                            type="xs:boolean"
+                            minOccurs="0"/>
+
+                <xs:element name="PedestrianWaiting"
+                            type="xs:boolean"
+                            minOccurs="0"/>
+
+            </xs:sequence>
+
+        </xs:complexType>
+
+    </xs:element>
+
+</xs:schema>

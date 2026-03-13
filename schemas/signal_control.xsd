@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:ct="http://smarttraffic/common"
+           targetNamespace="http://smarttraffic/signal"
+           xmlns="http://smarttraffic/signal"
+           elementFormDefault="qualified">
+
+    <xs:import namespace="http://smarttraffic/common"
+               schemaLocation="restrictions.xsd"/>
+
+    <xs:element name="SignalControlCommand">
+
+        <xs:complexType>
+
+            <xs:sequence>
+
+                <xs:element name="CommandID"
+                            type="ct:CommandIDType"/>
+
+                <xs:element name="TrafficLightID"
+                            type="ct:TrafficLightIDType"/>
+
+                <xs:element name="SignalState"
+                            type="ct:SignalStateType"/>
+
+                <xs:element name="DurationSeconds">
+
+                    <xs:simpleType>
+                        <xs:restriction base="xs:int">
+                            <xs:minInclusive value="5"/>
+                            <xs:maxInclusive value="300"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+
+                </xs:element>
+
+            </xs:sequence>
+
+        </xs:complexType>
+
+    </xs:element>
+
+</xs:schema>
