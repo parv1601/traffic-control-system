@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://smarttraffic/common"
+           xmlns="http://smarttraffic/common"
+           elementFormDefault="qualified">
+
+    <!-- ================= IDENTIFIERS ================= -->
+
+    <!-- Intersection ID: I### (scalable) -->
+    <xs:simpleType name="IntersectionIDType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="I[0-9]{1,6}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <!-- Road ID: I###_R### -->
+    <xs:simpleType name="RoadIDType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="I[0-9]{1,6}_R[0-9]{1,3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <!-- Lane ID -->
+    <xs:simpleType name="LaneIDType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="I[0-9]{1,6}_R[0-9]{1,3}_L[0-9]{1,2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <!-- Traffic Light ID -->
+    <xs:simpleType name="TrafficLightIDType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="I[0-9]{1,6}_TL[0-9]{1,3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <!-- Sensor ID -->
+    <xs:simpleType name="SensorIDType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="SEN_[0-9]{1,6}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <!-- ================= STREAM DATA IDs ================= -->
+
+    <xs:simpleType name="PacketIDType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="PKT_[0-9]{1,8}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="EventIDType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="EVT_[0-9]{1,8}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="CommandIDType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="CMD_[0-9]{1,8}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <!-- ================= TRAFFIC METRICS ================= -->
+
+    <xs:simpleType name="VehicleCountType">
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="10000"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="SpeedType">
+        <xs:restriction base="xs:float">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="300"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="DensityType">
+        <xs:restriction base="xs:float">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <!-- ================= SIGNAL STATES ================= -->
+
+    <xs:simpleType name="SignalStateType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="RED"/>
+            <xs:enumeration value="YELLOW"/>
+            <xs:enumeration value="GREEN"/>
+            <xs:enumeration value="FLASHING"/>
+            <xs:enumeration value="OFF"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <!-- ================= PRIORITY LEVEL ================= -->
+
+    <xs:simpleType name="PriorityLevelType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="LOW"/>
+            <xs:enumeration value="MEDIUM"/>
+            <xs:enumeration value="HIGH"/>
+            <xs:enumeration value="CRITICAL"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

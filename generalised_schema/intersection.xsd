@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:ct="http://smarttraffic/common"
+           targetNamespace="http://smarttraffic/intersection"
+           xmlns="http://smarttraffic/intersection"
+           elementFormDefault="qualified">
+
+    <!-- Import shared types -->
+    <xs:import namespace="http://smarttraffic/common"
+               schemaLocation="restrictions.xsd"/>
+
+    <!-- Root Element -->
+    <xs:element name="Intersection" type="IntersectionType"/>
+
+    <!-- ================= INTERSECTION ================= -->
+
+    <xs:complexType name="IntersectionType">
+
+        <xs:sequence>
+
+            <xs:element name="IntersectionID"
+                        type="ct:IntersectionIDType"/>
+
+            <xs:element name="Location"
+                        type="LocationType"/>
+
+            <xs:element name="Roads"
+                        type="RoadCollectionType"
+                        minOccurs="1"/>
+
+            <xs:element name="TrafficLights"
+                        type="TrafficLightCollectionType"
+                        minOccurs="0"/>
+
+            <xs:element name="Sensors"
+                        type="SensorCollectionType"
+                        minOccurs="0"/>
+
+        </xs:sequence>
+
+    </xs:complexType>
+
+
+    <!-- ================= LOCATION ================= -->
+
+    <xs:complexType name="LocationType">
+
+        <xs:sequence>
+
+            <xs:element name="Latitude" type="xs:decimal"/>
+            <xs:element name="Longitude" type="xs:decimal"/>
+
+            <xs:element name="City"
+                        type="xs:string"
+                        minOccurs="0"/>
+
+        </xs:sequence>
+
+    </xs:complexType>
+
+
+    <!-- ================= ROADS ================= -->
+
+    <xs:complexType name="RoadCollectionType">
+
+        <xs:sequence>
+
+            <xs:element name="Road"
+                        type="RoadType"
+                        maxOccurs="unbounded"/>
+
+        </xs:sequence>
+
+    </xs:complexType>
+
+
+    <xs:complexType name="RoadType">
+
+        <xs:sequence>
+
+            <xs:element name="RoadID"
+                        type="ct:RoadIDType"/>
+
+            <xs:element name="Direction"
+                        type="xs:string"
+                        minOccurs="0"/>
+
+            <xs:element name="Lanes"
+                        type="LaneCollectionType"
+                        minOccurs="0"/>
+
+            <xs:element name="PedestrianCrossing"
+                        type="PedestrianCrossingType"
+                        minOccurs="0"/>
+
+        </xs:sequence>
+
+    </xs:complexType>
+
+
+    <!-- ================= LANES ================= -->
+
+    <xs:complexType name="LaneCollectionType">
+
+        <xs:sequence>
+
+            <xs:element name="Lane"
+                        type="LaneType"
+                        maxOccurs="unbounded"/>
+
+        </xs:sequence>
+
+    </xs:complexType>
+
+
+    <xs:complexType name="LaneType">
+
+        <xs:sequence>
+
+            <xs:element name="LaneID"
+                        type="xs:string"/>
+
+            <xs:element name="AllowedMovement"
+                        type="xs:string"
+                        minOccurs="0"/>
+
+        </xs:sequence>
+
+    </xs:complexType>
+
+
+    <!-- ================= PEDESTRIAN ================= -->
+
+    <xs:complexType name="PedestrianCrossingType">
+
+        <xs:sequence>
+
+            <xs:element name="CrossingID"
+                        type="xs:string"/>
+
+            <xs:element name="SignalControlled"
+                        type="xs:boolean"/>
+
+        </xs:sequence>
+
+    </xs:complexType>
+
+
+    <!-- ================= TRAFFIC LIGHTS ================= -->
+
+    <xs:complexType name="TrafficLightCollectionType">
+
+        <xs:sequence>
+
+            <xs:element name="TrafficLight"
+                        type="TrafficLightType"
+                        maxOccurs="unbounded"/>
+
+        </xs:sequence>
+
+    </xs:complexType>
+
+
+    <xs:complexType name="TrafficLightType">
+
+        <xs:sequence>
+
+            <xs:element name="TrafficLightID"
+                        type="ct:TrafficLightIDType"/>
+
+            <xs:element name="ControlledRoad"
+                        type="ct:RoadIDType"/>
+
+            <xs:element name="CurrentState"
+                        type="xs:string"
+                        minOccurs="0"/>
+
+        </xs:sequence>
+
+    </xs:complexType>
+
+
+    <!-- ================= SENSORS ================= -->
+
+    <xs:complexType name="SensorCollectionType">
+
+        <xs:sequence>
+
+            <xs:element name="Sensor"
+                        type="SensorType"
+                        maxOccurs="unbounded"/>
+
+        </xs:sequence>
+
+    </xs:complexType>
+
+
+    <xs:complexType name="SensorType">
+
+        <xs:sequence>
+
+            <xs:element name="SensorID"
+                        type="xs:string"/>
+
+            <xs:element name="SensorType"
+                        type="xs:string"/>
+
+            <xs:element name="AssociatedRoad"
+                        type="ct:RoadIDType"/>
+
+        </xs:sequence>
+
+    </xs:complexType>
+
+</xs:schema>

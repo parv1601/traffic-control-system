@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:ct="http://smarttraffic/common"
+           targetNamespace="http://smarttraffic/signal"
+           xmlns="http://smarttraffic/signal"
+           elementFormDefault="qualified">
+
+    <xs:import namespace="http://smarttraffic/common"
+               schemaLocation="restrictions.xsd"/>
+
+
+    <!-- ================= BASE COMMAND ================= -->
+
+    <xs:complexType name="SignalCommandType">
+
+        <xs:sequence>
+
+            <xs:element name="CommandID"
+                        type="ct:CommandIDType"/>
+
+            <xs:element name="Timestamp"
+                        type="xs:dateTime"
+                        minOccurs="0"/>
+
+            <xs:element name="TargetIntersectionID"
+                        type="ct:IntersectionIDType"
+                        minOccurs="0"/>
+
+            <xs:element name="TrafficLightID"
+                        type="ct:TrafficLightIDType"
+                        minOccurs="0"/>
+
+            <xs:element name="SignalState"
+                        type="ct:SignalStateType"
+                        minOccurs="0"/>
+
+            <xs:element name="DurationSeconds"
+                        type="DurationType"
+                        minOccurs="0"/>
+
+            <xs:element name="PriorityLevel"
+                        type="ct:PriorityLevelType"
+                        minOccurs="0"/>
+
+            <xs:element name="Reason"
+                        type="xs:string"
+                        minOccurs="0"/>
+
+        </xs:sequence>
+
+    </xs:complexType>
+
+
+    <!-- ================= ROOT ELEMENT ================= -->
+
+    <xs:element name="SignalControlCommand"
+                type="SignalCommandType"/>
+
+
+    <!-- ================= DURATION TYPE ================= -->
+
+    <xs:simpleType name="DurationType">
+
+        <xs:restriction base="xs:int">
+
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="600"/>
+
+        </xs:restriction>
+
+    </xs:simpleType>
+
+</xs:schema>

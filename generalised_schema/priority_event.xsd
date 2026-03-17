@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:ct="http://smarttraffic/common"
+           targetNamespace="http://smarttraffic/events"
+           xmlns="http://smarttraffic/events"
+           elementFormDefault="qualified">
+
+    <xs:import namespace="http://smarttraffic/common"
+               schemaLocation="common_types.xsd"/>
+
+
+    <!-- ================= BASE EVENT ================= -->
+
+    <xs:complexType name="PriorityEventType">
+
+        <xs:sequence>
+
+            <xs:element name="EventID"
+                        type="ct:EventIDType"/>
+
+            <xs:element name="Timestamp"
+                        type="xs:dateTime"/>
+
+            <xs:element name="IntersectionID"
+                        type="ct:IntersectionIDType"
+                        minOccurs="0"/>
+
+            <xs:element name="TrafficLightID"
+                        type="ct:TrafficLightIDType"
+                        minOccurs="0"/>
+
+            <xs:element name="SourceSensorID"
+                        type="ct:SensorIDType"
+                        minOccurs="0"/>
+
+            <xs:element name="PriorityLevel"
+                        type="xs:string"
+                        minOccurs="0"/>
+
+        </xs:sequence>
+
+    </xs:complexType>
+
+
+    <!-- ================= EMERGENCY EVENT ================= -->
+
+    <xs:element name="EmergencyEvent"
+                type="EmergencyEventType"/>
+
+    <xs:complexType name="EmergencyEventType">
+
+        <xs:complexContent>
+
+            <xs:extension base="PriorityEventType">
+
+                <xs:sequence>
+
+                    <xs:element name="VehicleType"
+                                type="xs:string"
+                                minOccurs="0"/>
+
+                </xs:sequence>
+
+            </xs:extension>
+
+        </xs:complexContent>
+
+    </xs:complexType>
+
+
+    <!-- ================= PEDESTRIAN EVENT ================= -->
+
+    <xs:element name="PedestrianEvent"
+                type="PedestrianEventType"/>
+
+    <xs:complexType name="PedestrianEventType">
+
+        <xs:complexContent>
+
+            <xs:extension base="PriorityEventType">
+
+                <xs:sequence>
+
+                    <xs:element name="CrosswalkID"
+                                type="xs:string"
+                                minOccurs="0"/>
+
+                    <xs:element name="PedestrianCount"
+                                type="xs:int"
+                                minOccurs="0"/>
+
+                </xs:sequence>
+
+            </xs:extension>
+
+        </xs:complexContent>
+
+    </xs:complexType>
+
+</xs:schema>
