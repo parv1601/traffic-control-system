@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://sdms/stream"
+           xmlns="http://sdms/stream"
+           elementFormDefault="qualified">
+
+    <!-- ================= ROOT ================= -->
+
+    <xs:element name="StreamSystem">
+        <xs:complexType>
+            <xs:sequence>
+
+                <xs:element name="Stream"
+                            type="StreamType"
+                            maxOccurs="unbounded"/>
+
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!-- ================= STREAM ================= -->
+
+    <xs:complexType name="StreamType">
+
+        <xs:sequence>
+
+            <xs:element name="StreamName"
+                        type="xs:string"/>
+
+            <xs:element name="Source"
+                        type="xs:string"
+                        minOccurs="0"/>
+
+            <xs:element name="Schema"
+                        type="SchemaType"/>
+
+            <xs:element name="Window"
+                        type="WindowType"
+                        minOccurs="0"/>
+
+        </xs:sequence>
+
+    </xs:complexType>
+
+
+    <!-- ================= SCHEMA ================= -->
+
+    <xs:complexType name="SchemaType">
+
+        <xs:sequence>
+
+        
+            <xs:element name="TimestampAttribute">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Name" type="xs:string"/>
+                        <xs:element name="Type" type="xs:dateTime"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <!-- Normal Attributes -->
+            <xs:element name="Attribute"
+                        type="AttributeType"
+                        maxOccurs="unbounded"/>
+
+        </xs:sequence>
+
+    </xs:complexType>
+
+
+    <xs:complexType name="AttributeType">
+
+        <xs:sequence>
+
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="Type" type="xs:string"/>
+
+        </xs:sequence>
+
+    </xs:complexType>
+
+
+    <!-- ================= WINDOW ================= -->
+
+    <xs:complexType name="WindowType">
+
+        <xs:sequence>
+
+            <xs:element name="WindowType"
+                        type="WindowEnum"/>
+
+            <xs:element name="Size"
+                        type="xs:int"
+                        minOccurs="0"/>
+
+            <xs:element name="SlideVelocity"
+                        type="xs:int"
+                        minOccurs="0"/>
+
+            <xs:element name="Unit"
+                        type="xs:string"
+                        minOccurs="0"/>
+
+        </xs:sequence>
+
+    </xs:complexType>
+
+
+    <xs:simpleType name="WindowEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Sliding"/>
+            <xs:enumeration value="Tumbling"/>
+            <xs:enumeration value="Landmark"/>
+            <xs:enumeration value="Folding"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
