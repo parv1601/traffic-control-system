@@ -1,0 +1,41 @@
+<StreamSystem xmlns="http://sdms/stream">
+
+<Stream>
+    <StreamName>TrafficStream</StreamName>
+    <Source>SensorNetwork</Source>
+
+    <Schema>
+
+        
+        <TimestampAttribute>
+            <Name>event_time</Name>
+            <Type>2026-03-14T10:20:00</Type>
+        </TimestampAttribute>
+
+        <Attribute>
+            <Name>vehicle_count</Name>
+            <Type>int</Type>
+        </Attribute>
+
+        <Attribute>
+            <Name>speed</Name>
+            <Type>float</Type>
+        </Attribute>
+
+        <Attribute>
+            <Name>lane_id</Name>
+            <Type>string</Type>
+        </Attribute>
+
+    </Schema>
+
+    <Window>
+        <WindowType>Sliding</WindowType>
+        <Size>60</Size>
+        <SlideVelocity>10</SlideVelocity>
+        <Unit>seconds</Unit>
+    </Window>
+
+</Stream>
+
+</StreamSystem>
